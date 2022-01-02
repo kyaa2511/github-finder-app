@@ -1,12 +1,11 @@
-import {useContext } from 'react';
+import React, {useContext, useEffect} from 'react';
 import RepoList from '../repos/RepoList';
 import { FaCodepen, FaStore, FaUserFriends, FaUsers } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import Spinner from '../layout/Spinner';
-import { useEffect } from 'react/cjs/react.development';
 import GithubContext from '../../context/github/GithubContext';
 import { useParams } from 'react-router-dom';
-import { getUser, getUserAndRepos, getUserRepos } from '../../context/github/GithubActions';
+import { getUserAndRepos } from '../../context/github/GithubActions';
 
 function User() {
     
@@ -22,10 +21,6 @@ function User() {
 
             const userData = await getUserAndRepos(params.login)
             dispatch({type: 'GET_USER_AND_REPOS', payload: userData})      
-            
-
-
-
         }
         getUserData();
         // getUserRepos(params.login)
